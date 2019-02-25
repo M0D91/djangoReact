@@ -17,7 +17,6 @@ class Home extends Component  {
     }
 
     getApiData = () => {
-       
         axios 
             .get(api_url)
             .then( (response) => {
@@ -31,7 +30,24 @@ class Home extends Component  {
             })
     }
 
+    createElement = () =>{
+        axios
+            .post(api_url, {
+                title: 'post n',
+                content: 'contenido hardcodeado locamente'
+            })
+            .then( (response)=>{
+                console.log(response);
+            })
+            .catch( (error)=>{
+                console.log(error);
+            })
+    }
+
     componentWillMount(){
+        this.getApiData();
+    }
+    componentWillUpdate(){
         this.getApiData();
     }
 
@@ -46,7 +62,8 @@ class Home extends Component  {
                     // Por algun motivo es necesario convertir de nuevo los 
                     // datos que vienen del back a Array.
                     // De lo contrario no se puede aplicar el .map() en destino
-                    data = {Array.from(this.state.data)}    
+                    data = {Array.from(this.state.data)}
+                    createElement = {this.createElement}    
                 />
             </HomeLayout>
         )

@@ -5,16 +5,25 @@ class Post extends Component {
     // funciones utiles para el 'controllador'
     render(){
         return (
-            <div className='postCajita'>
+            <div 
+                className='postCajita'
+                >
                 {this.props.data.map( (item)=>{
                     return(
                         <PostLayout 
                             key = {item.id}
                             {...item}
+                            
                             />
                         )
                     })
                 }
+                
+            <button 
+                onClick={this.props.createElement}
+                >
+                Nuevo post
+            </button>
             </div>
         )
         
