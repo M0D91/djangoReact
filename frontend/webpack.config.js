@@ -10,7 +10,7 @@ module.exports = (env) => {
 
   return {
     entry: {
-      "home": path.resolve(__dirname, 'src/entries/home.js'),
+      "home": path.resolve(__dirname, 'src/entryPoints/home.js'),
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
