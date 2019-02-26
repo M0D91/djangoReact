@@ -6,7 +6,6 @@ const Post = (props) => {
         <div className='Post'>
             <h2 className='Post-title'>{props.title}</h2>
             <p className='Post-author'>{props.content}</p>
-            
         </div>
        
     )
