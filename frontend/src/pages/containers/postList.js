@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-
-import Post from './post';
+import PostLayout from '../components/postListLayout';
+// import Post from './post';
 
 const api_url = 'http://localhost:8000/api/';
 
 class PostList extends Component {
     state = {
-        data : 0
+        data : 0,
     }
 
     getApiData = () => {
@@ -31,19 +31,41 @@ class PostList extends Component {
                 content: 'contenido hardcodeado locamente'
             })
             .then( (response)=>{
-                console.log(response);
+                // console.log(response);
+                this.getApiData();
             })
             .catch( (error)=>{
                 console.log(error);
             })
+        // console.log('me clickean: ')
     }
 
-    componentWillMount(){
+    handleClick(event){
+        // console.log('me apretaron', event.target);
+        // if(event.target.id) {
+            // console.log('id: ', event.target.id);
+        // }
+        console.log('id: ', event.target);
+        // this.setRef();
+    }
+
+    h2HandleClick(event){
+        // console.log(event.target.id);
+        // event.preventDefault()
+    }
+
+    pHandleClick(event){
+        // console.log(event.target.id);
+        // event.preventDefault()
+    }
+
+    componentDidMount(){
         this.getApiData();
     }
-    // componentWillUpdate(){
-    //     this.getApiData();
-    // }
+
+    componentDidUpdate(){
+        console.log('me actualicé: ');
+    }
 
     render() {
         // ¡¡¡ IMPORTANTE !!!
@@ -58,10 +80,13 @@ class PostList extends Component {
 
                 {parsedData.map( (item)=>{
                     return(
-                        <Post 
+                        <PostLayout 
                             key = {item.id}
                             {...item}
-                            
+                            // setRef = {this.setRef}
+                            handleClick = {this.handleClick}
+                            // pHandleClick = {this.pHandleClick}
+                            // h2HandleClick = {this.h2HandleClick}
                             />
                         )
                     })
